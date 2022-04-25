@@ -43,7 +43,9 @@ class Pret extends Model
                                     END AS 'status'
                                     FROM {$this->table}
                                     LEFT JOIN articles ON pret.id_article = articles.id_article
-                                    WHERE pret.id_user = :id_user AND pret.available = 1");
+                                    WHERE pret.id_user = :id_user AND pret.available = 1
+                                    -- ORDER BY pret.id_pret DESC
+                                    ");
         $stmt1->bindParam(':id_user', $_SESSION['is_logged']);
         $stmt1->execute();
         $pret = $stmt1->fetchAll();

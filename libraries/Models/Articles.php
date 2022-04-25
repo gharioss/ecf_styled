@@ -31,16 +31,7 @@ class Articles extends Model
         $stmt2->execute();
     }
 
-    public function getSearch($search)
-    {
-        $sql = $this->pdo->query("SELECT * 
-                                FROM articles
-                                WHERE concat(fname,lname) LIKE '%{$search}%' OR title LIKE '%{$search}%'
-                                ");
-        $article = $sql->fetchAll();
 
-        return $article;
-    }
 
     public function insertRecipe($fname, $lname, $title, $img, $content, $id_category, $collection, $edition)
     {
@@ -129,6 +120,18 @@ class Articles extends Model
         $autheur = $stmt1->fetchAll();
 
         return $autheur;
+    }
+
+
+    public function getSearch($search)
+    {
+        $sql = $this->pdo->query("SELECT * 
+                                FROM articles
+                                WHERE concat(fname,lname) LIKE '%{$search}%' OR title LIKE '%{$search}%'
+                                ");
+        $article = $sql->fetchAll();
+
+        return $article;
     }
 
 

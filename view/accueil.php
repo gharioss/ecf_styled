@@ -118,15 +118,14 @@
     }
 } ?>
 
-
-<?php if ($last_day != 0) : ?>
+<?php if (isset($last_day) && ($last_day != 0)) : ?>
     <div class="warning_msg">
         <div class="warning">
             <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
             <strong>ATTENTION!</strong> Vous avez <?= $last_day . ' ' . $warningBook; ?> à rendre demain !!
         </div>
     </div>
-<?php elseif ($late_day != 0) : ?>
+<?php elseif (isset($late_day) && ($late_day != 0)) : ?>
     <div class="warning_msg">
         <div class="alert">
             <span class="closebtn alert_btn" onclick="this.parentElement.style.display='none';">&times;</span>

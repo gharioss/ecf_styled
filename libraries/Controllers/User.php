@@ -33,12 +33,73 @@ class User extends Controller
 
                 $this->redirect('index.php');
             } else {
-                echo "L'email : $email, n'est pas un email valide.";
+                echo json_encode("L'email : $email, n'est pas un email valide.");
             }
         } else {
-            echo "Vous devez remplir toutes les données.";
+            echo json_encode("Vous devez remplir toutes les données.");
         }
     }
+
+    // public function insert()
+    // {
+    //     $userClass = new \Models\User();
+
+
+    //     $contentType = isset($_SERVER['CONTENT_TYPE']) ? trim($_SERVER['CONTENT_TYPE']) : '';
+
+    //     if ($contentType === "application/json") {
+
+    //         //Receive the RAW post data.
+    //         $content = trim(file_get_contents("php://input"));
+
+
+    //         $decoded = json_decode($content, true);
+
+
+    //         //If json_decode failed, the JSON is invalid.
+
+    //         if (!is_array($decoded)) {
+    //             // Send error back to user.
+    //             echo "there was an error";
+    //         } else {
+
+    //             header('Content-Type: application/json');
+
+    //             $fname = $decoded['fname'];
+    //             $lname = $decoded['lname'];
+    //             $email = $decoded['email'];
+    //             $pwd = $decoded['pwd'];
+    //             $adress = $decoded['adress'];
+    //             $city = $decoded['city'];
+    //             $zip_code = $decoded['zip_code'];
+
+
+
+
+    //             if (!empty($_POST['lname']) && !empty($_POST['fname']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['adress']) && !empty($_POST['city']) && !empty($_POST['zip_code'])) {
+
+    //                 $lname = $_POST['lname'];
+    //                 $fname = $_POST['fname'];
+    //                 $email = $_POST['email'];
+    //                 $pwd = $_POST['password'];
+    //                 $password = password_hash($pwd, PASSWORD_DEFAULT);
+    //                 $adress = $_POST['adress'];
+    //                 $city = $_POST['city'];
+    //                 $zip_code = $_POST['zip_code'];
+    //                 if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    //                     $userClass->insertUser($lname, $fname, $email, $password, $adress, $city, $zip_code);
+
+    //                     $this->redirect('index.php');
+    //                 } else {
+    //                     echo json_encode("L'email : $email, n'est pas un email valide.");
+    //                 }
+    //             } else {
+    //                 echo json_encode("Vous devez remplir toutes les données.");
+    //             }
+    //         }
+    //         }
+    //     }
+    // }
 
     public function login()
     {
