@@ -97,6 +97,44 @@
 </div>
 
 
+<?php foreach ($emprunt as $e) {
+    $last_day = 0;
+    $late_day = 0;
+    if ($e['status'] === 'C\'est votre dernier jour avant de devoir rendre cet article...') {
+        $last_day++;
+    } elseif ($e['status'] === 'Vous avez dépassé le temps imparti...') {
+        $late_day++;
+    }
+
+    if ($last_day == 1) {
+        $warningBook = 'livre';
+    } else {
+        $warningBook = 'livres';
+    }
+    if ($late_day == 1) {
+        $alertBook = 'livre';
+    } else {
+        $alertBook = 'livres';
+    }
+} ?>
+
+
+<?php if ($last_day != 0) : ?>
+    <div class="warning_msg">
+        <div class="warning">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <strong>ATTENTION!</strong> Vous avez <?= $last_day . ' ' . $warningBook; ?> à rendre demain !!
+        </div>
+    </div>
+<?php elseif ($late_day != 0) : ?>
+    <div class="warning_msg">
+        <div class="alert">
+            <span class="closebtn alert_btn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <strong>ATTENTION!</strong> La date de rendue de <?= $late_day . ' ' . $alertBook; ?> à expiré !!
+        </div>
+    </div>
+<?php endif; ?>
+
 
 <div class="card_title">
     <h1>Roman</h1>
@@ -165,3 +203,18 @@
         <?php endif; ?>
     <?php endfor; ?>
 </ul>
+
+<script>
+    var close = document.getElementsByClassName("closebtn");
+    var i;
+
+    for (i = 0; i < close.length; i++) {
+        close[i].onclick = function() {
+            var div = this.parentElement;
+            div.style.opacity = "0";
+            setTimeout(function() {
+                div.style.display = "none";
+            }, 600);
+        }
+    }
+</script>

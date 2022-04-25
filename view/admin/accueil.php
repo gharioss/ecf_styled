@@ -1,6 +1,7 @@
+<?php include('view/admin/redirect.php'); ?>
 <div class="table">
     <div class="card_title">
-        <h1>Administration</h1>
+        <h1>Liste des utilisateurs</h1>
     </div>
     <div class="field button">
         <a href="index.php?controller=articles&task=showAdd"><input class="btnAdd" type="submit" value="Ajouter un livre"></a>

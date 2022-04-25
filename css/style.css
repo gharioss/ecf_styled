@@ -420,7 +420,8 @@ form .button {
     width: 250px;
     height: 400px;
     z-index: 1;
-    background: rgb(255, 99, 71);
+    background: #84947B;
+    /* background: rgb(255, 99, 71); */
 }
 
 .card_front:hover {
@@ -429,11 +430,21 @@ form .button {
 }
 .card_title {
     background: transparent;
+    margin-top: 15px;
 }
 
-.back_info, .card_item, .subj, .author, .summary, .render_book{
-    background: rgb(255, 99, 71);
+.back_info, .card_item, .subj, .author, .summary, .status{
+    background: #84947B;
+    /* background: rgb(255, 99, 71); */
+    color: #fff;
     
+}
+.last_day {
+    background: #ff9800;
+}
+
+.late_day {
+    background: #f44336;
 }
 
 
@@ -492,6 +503,7 @@ form .button {
 .card_lst {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
     max-width: 1800;
 }
@@ -615,6 +627,11 @@ label {
     padding-bottom: 5px;
     font-size: 15px;
 }
+/* .button input:hover {
+    background-color: #fff;
+    color: #84947B;
+    border: 1px solid #84947B;
+} */
 
 .edit_article_select {
     margin-bottom: 15px;
@@ -630,4 +647,85 @@ label {
 }
 .this_article_infos a {
     right: 0px;
+}
+.render_book {
+    margin-left: 5px;
+    margin-top: 10px;
+}
+
+.horizontal_line {
+    border-left: 1px solid #b4b4b4;
+}
+
+.user_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.user_infos {
+    padding: 0 300px;
+}
+
+.warning {
+    padding: 20px;
+    background-color: #ff9800;
+    color: white;
+    border-radius: 15px;
+    width: 600px;
+    opacity: 1;
+    transition: opacity 0.6s;
+}
+
+.warning strong {
+    background-color: #ff9800;
+}
+
+  
+.closebtn {
+  margin-left: 25px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  background-color: #ff9800;
+}
+
+.closebtn:hover {
+  color: black;
+  background-color: #ff9800;
+}
+.warning_msg {
+    display: flex;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 0.6s;
+}
+.alert {
+  border-radius: 15px;
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  margin-bottom: 15px;
+  width: 600px;
+  opacity: 1;
+  transition: opacity 0.6s;
+}
+.alert strong {
+    background-color: #f44336;
+}
+.alert_btn {
+    margin-left: 25px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  background-color: #f44336;
 }

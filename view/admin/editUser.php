@@ -1,3 +1,5 @@
+<?php include('view/admin/redirect.php'); ?>
+
 <div class="card_title">
     <h1>Modifier cet Utilisateur</h1>
 </div>

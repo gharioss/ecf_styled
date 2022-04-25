@@ -1,3 +1,5 @@
+<?php include('view/admin/redirect.php'); ?>
+
 <div class="card_title">
     <h1>Listes des livres empruntés</h1>
 </div>

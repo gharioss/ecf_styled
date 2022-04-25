@@ -1,3 +1,5 @@
+<?php include('view/admin/redirect.php'); ?>
+
 <form method="POST" action="index.php?controller=article_genre&task=insertTags">
     <div class="contact-input">
 

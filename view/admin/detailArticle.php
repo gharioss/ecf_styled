@@ -1,3 +1,5 @@
+<?php include('view/admin/redirect.php'); ?>
+
 <div class="card_title">
     <h1>Modificier cet article</h1>
 </div>

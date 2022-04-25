@@ -1,5 +1,15 @@
 <?php include "view/account.php"; ?>
+
+
+<div class="card_title">
+    <h1>Liste de mes historiques...</h1>
+</div>
 <ul class="card_lst">
+    <?php if (!isset($emprunt[0])) : ?>
+        <div class="card_title">
+            <h1>Il n'y a pas de d'historique...</h1>
+        </div>
+    <?php endif; ?>
     <?php foreach ($emprunt as $e) : ?>
         <li>
             <div class="card_flipper">

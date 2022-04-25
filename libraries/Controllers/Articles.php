@@ -11,6 +11,8 @@ class Articles extends Controller
 
         $article_genreClass = new \Models\Tags();
 
+        $pretClass = new \Models\Pret();
+
 
         $articles = $articleClass->findAll();
 
@@ -20,11 +22,13 @@ class Articles extends Controller
 
         $allTags = $article_genreClass->selectTags();
 
+        $emprunt = $pretClass->getAvailable();
+
 
         $pageTitle = "Articles";
 
 
-        $this->render('accueil', compact('pageTitle', 'articles', 'autheurs', 'categorys', 'allTags'));
+        $this->render('accueil', compact('pageTitle', 'articles', 'autheurs', 'categorys', 'allTags', 'emprunt'));
     }
 
     public function show()

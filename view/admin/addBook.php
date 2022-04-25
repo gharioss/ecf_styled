@@ -1,3 +1,5 @@
+<?php include('view/admin/redirect.php'); ?>
+
 <div class="addRecipe">
     <div class="card_title">
         <h1>Ajouter un article</h1>

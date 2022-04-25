@@ -67,7 +67,7 @@ class Articles extends Model
 
     public function getAll()
     {
-        $sql = $this->pdo->query("SELECT * FROM {$this->table}");
+        $sql = $this->pdo->query("SELECT * FROM {$this->table} ORDER BY id_article DESC");
         $articles = $sql->fetchAll();
 
         return $articles;

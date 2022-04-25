@@ -1,3 +1,5 @@
+<?php include('view/admin/redirect.php'); ?>
+
 <div class="table">
     <div class="card_title">
         <h1>Liste des articles</h1>

@@ -1,5 +1,4 @@
 <div class="table">
-    <h1>Mon compte :</h1>
     <div class="field button">
         <a href="index.php?controller=pret&task=availableIndex"><input class="btnAdd" type="submit" value="Mes emprunts actuels"></a>
         <a href="index.php?controller=pret&task=index"><input class="editCom" type="submit" value="Historique d'emprunt"></a>

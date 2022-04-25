@@ -159,4 +159,33 @@ class User extends Controller
             echo "L'email : $email, n'est pas un email valide.";
         }
     }
+    public function editMyUser()
+    {
+
+        $userClass = new \Models\User();
+
+        $lname = null;
+        $fname = null;
+        $email = null;
+        $adress = null;
+        $city = null;
+        $zip_code = null;
+
+
+        $lname = $_POST['edit_lname'];
+        $fname = $_POST['edit_fname'];
+        $email = $_POST['edit_email'];
+        $adress = $_POST['edit_adress'];
+        $city = $_POST['edit_city'];
+        $zip_code = $_POST['edit_zip_code'];
+        $id = $_GET['id'];
+
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $userClass->edit($lname, $fname, $email, $adress, $city, $zip_code, $id);
+
+            $this->redirect('index.php?controller=pret&task=availableIndex');
+        } else {
+            echo "L'email : $email, n'est pas un email valide.";
+        }
+    }
 }
