@@ -3,25 +3,31 @@
     <div class="warning_msg">
         <div class="warning">
             <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-            <strong>ATTENTION!</strong> Un utilisateur vient d'être modifié !!
+            <strong>ATTENTION !</strong> Un utilisateur vient d'être modifié !!
         </div>
     </div>
 <?php elseif (isset($_GET['info']) && $_GET['info'] == 'deletedUser') : ?>
     <div class="warning_msg">
         <div class="alert">
             <span class="closebtn alert_btn" onclick="this.parentElement.style.display='none';">&times;</span>
-            <strong>ATTENTION!</strong> Un utilisateur vient d'être supprimé !!
+            <strong>ATTENTION !</strong> Un utilisateur vient d'être supprimé !!
+        </div>
+    </div>
+<?php elseif (isset($_GET['info']) && $_GET['info'] == 'createdUser') : ?>
+    <div class="warning_msg">
+        <div class="success">
+            <span class="closebtn success_btn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <strong>SUCCÈS !</strong> Un utilisateur vient d'être ajouté !!
         </div>
     </div>
 <?php endif; ?>
 <div class="table">
+
+    <div class="field button">
+        <?php include('view/template/admin.php'); ?>
+    </div>
     <div class="card_title">
         <h1>Liste des utilisateurs</h1>
-    </div>
-    <div class="field button">
-        <a href="index.php?controller=articles&task=showAdd"><input class="btnAdd" type="submit" value="Ajouter un livre"></a>
-        <a href="index.php?controller=articles&task=getAllArticle"><input class="editCom" type="submit" value="Liste de livres"></a>
-        <a href="index.php?controller=pret&task=nonAvailable"><input class="editCom" type="submit" value="Liste des oeuvres empruntées"></a>
     </div>
     <table>
         <tr class="sticky">
@@ -33,6 +39,7 @@
             <th>VILLE</th>
             <th>CODE-POSTAL</th>
             <th>ROLE</th>
+            <th>CARTE</th>
             <th>ACTIONS</th>
         </tr>
         <?php foreach ($usersInfo as $userInfo) : ?>
@@ -46,7 +53,13 @@
                 <td><?php echo $userInfo['zip_code']; ?></td>
                 <td><?php echo $userInfo['role']; ?></td>
                 <td>
+                    <a href="index.php?controller=pret&task=getPrinted&id=<?= $userInfo['id_user']; ?>">
+                        <i class="fa-solid fa-print"></i>
+                    </a>
+                </td>
+                <td>
                     <?php if ($userInfo['role'] != "Admin") : ?>
+
                         <a href="index.php?controller=user&task=getUser&id=<?= $userInfo['id_user']; ?>">
                             <input type="submit" class="edit_btn_user" value="Modifier">
                         </a>

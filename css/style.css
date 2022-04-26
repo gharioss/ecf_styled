@@ -42,7 +42,11 @@ li {
 .top_navbar .navbar_hr {
     width: 0px;
     height: 25px;
-    margin: 20px;
+    margin: 0 20px;
+}
+.navbar_hr {
+    margin: 0 20px;
+    height: 65px;
 }
 .top_navbar .navbar_bibli{
     color: #2F2E2E;
@@ -101,6 +105,8 @@ li {
     border: 1px solid #00dc64;
     color: #00dc64;
 }
+
+
 
 .input_search {
     border: transparent;
@@ -634,11 +640,41 @@ label {
     padding-bottom: 5px;
     font-size: 15px;
 }
-/* .button input:hover {
-    background-color: #fff;
-    color: #84947B;
-    border: 1px solid #84947B;
-} */
+.fa-print:hover {
+    color: #2196F3;
+}
+
+.print_li {
+    width: 250px;
+    height: 31px;
+    margin-left: 4px;
+    border: 1px solid #b4b4b4;
+    border-radius: 17px;
+    background: #fff;
+    line-height: 33px;
+    text-align: center;
+    vertical-align: top;
+    font-size: 14px;
+    font-weight: 500;
+    color: #838383;
+    text-transform: none;
+    cursor: pointer;
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.print_li:hover {
+    border: 1px solid #2196F3;
+    color: #2196F3;
+}
+
+.print_p {
+    margin-right:10px;
+}
 
 .edit_article_select {
     margin-bottom: 15px;
@@ -770,15 +806,24 @@ label {
       background-color: #04AA6D;
   
   }
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+footer {
+    margin-top: auto;
+}
+
+
 .footer {
-    position: relative;
-    bottom: 0;
+    margin-top: auto;
     background: #E1E9E1;
     display: flex;
     justify-content: space-evenly;
     width: 100vw;
     overflow: hidden;
-    height: 150px;
+    height: 120px;
     margin-top: 40px;
 }
 
@@ -819,9 +864,4 @@ label {
     position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 0;
-}
-
-body {
-    position: absolute;
-    height: 100vh;
 }

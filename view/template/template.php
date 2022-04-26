@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://kit.fontawesome.com/f00c55aea5.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/print.css" media="print">
     <title><?= $pageTitle ?></title>
 </head>
 
@@ -23,15 +24,6 @@
                     <a class="navbar_bibli bold" href="index.php">Bibliothèque</a>
                 </li>
                 <hr class="navbar_hr">
-                <!-- <div class="icons_navbar">
-                    <li>
-                        <span><i class="fa-brands fa-facebook"></i></span>
-                    </li>
-                    <li>
-                        <span><i class="fa-brands fa-twitter"></i></span>
-                    </li>
-                </div> -->
-                <!-- class="search-input" -->
 
 
                 <div class="user_navbar">
@@ -82,7 +74,6 @@
         <div id="form_signup">
             <div class="wrapper">
                 <section class="form signup">
-                    <!-- enctype="multipart/form-data" -->
                     <form action="index.php?controller=user&task=insert" method="POST">
                         <div id="register_error" class="error-txt"></div>
                         <div class="name-details">
@@ -160,14 +151,12 @@
     <footer>
         <div class="footer">
             <div class="text">
-                <p>2022 par AVENTURES GUSTATIVES</p>
+                <p>© 2022 BIBLIOTÈQUE par Julie Napoli</p>
             </div>
             <nav class="icons">
                 <ul>
-                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-                    <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa-brands fa-pinterest"></i></a></li>
-                    <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+                    <li><a href="https://github.com/gharioss" target="_blank"><i class="fa-brands fa-github"></i></a></li>
+                    <li><a href="https://www.linkedin.com/in/julie-napoli-92a85122b/" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>
                 </ul>
             </nav>
         </div>

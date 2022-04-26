@@ -24,10 +24,6 @@ class User extends Model
         $id = $this->pdo->lastInsertId();
         $_SESSION['is_logged'] = $id;
         $_SESSION['is_admin'] = 'user';
-
-
-        //get last id
-        //to do
     }
 
     public function loginUser($email, $password)
@@ -105,6 +101,21 @@ class User extends Model
         $stmt1->bindParam(":zip_code", $zip_code);
         $stmt1->bindParam(":id_user", $id);
 
+        $stmt1->execute();
+    }
+
+    public function createUser($lname, $fname, $email, $password, $adress, $city, $zip_code, $role)
+    {
+        $stmt1 = $this->pdo->prepare("INSERT INTO {$this->table} (lname, fname, email, password, adress, city, zip_code, id_role)
+                                    VALUES (:lname, :fname, :email, :password, :adress, :city, :zip_code, :role)");
+        $stmt1->bindParam(":lname", $lname);
+        $stmt1->bindParam(":fname", $fname);
+        $stmt1->bindParam(":email", $email);
+        $stmt1->bindParam(":password", $password);
+        $stmt1->bindParam(":adress", $adress);
+        $stmt1->bindParam(":city", $city);
+        $stmt1->bindParam(":zip_code", $zip_code);
+        $stmt1->bindParam(":role", $role);
         $stmt1->execute();
     }
 }

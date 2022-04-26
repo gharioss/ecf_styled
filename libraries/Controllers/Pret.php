@@ -52,4 +52,23 @@ class Pret extends Controller
 
         $this->render('admin/occuped', compact('pageTitle', 'emprunt'));
     }
+
+    public function getPrinted()
+    {
+        $pretClass = new \Models\Pret();
+
+        if ($_GET['id']) {
+            $id = $_GET['id'];
+        }
+
+        if (!$id) {
+            echo "il y a eu une erreur";
+        }
+
+        $pretInfo = $pretClass->print($id);
+
+        $pageTitle = "Carte utilisateur";
+
+        $this->render('admin/cardUser', compact('pageTitle', 'pretInfo'));
+    }
 }

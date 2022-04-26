@@ -4,33 +4,32 @@
     <div class="warning_msg">
         <div class="warning">
             <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-            <strong>ATTENTION!</strong> Un article vient d'être supprimé !!
+            <strong>ATTENTION !</strong> Un article vient d'être supprimé !!
         </div>
     </div>
 <?php elseif (isset($_GET['info']) && $_GET['info'] == 'deletedArticle') : ?>
     <div class="warning_msg">
         <div class="alert">
             <span class="closebtn alert_btn" onclick="this.parentElement.style.display='none';">&times;</span>
-            <strong>ATTENTION!</strong> Un article vient d'être modifié !!
+            <strong>ATTENTION !</strong> Un article vient d'être modifié !!
         </div>
     </div>
 <?php elseif (isset($_GET['info']) && $_GET['info'] == 'createdArticle') : ?>
     <div class="warning_msg">
         <div class="success">
             <span class="closebtn success_btn" onclick="this.parentElement.style.display='none';">&times;</span>
-            <strong>Succès!</strong> Un article vient d'être ajouté !!
+            <strong>SUCCÈS !</strong> Un article vient d'être ajouté !!
         </div>
     </div>
 <?php endif; ?>
 
 <div class="table">
+
+    <div class="field button">
+        <?php include('view/template/admin.php'); ?>
+    </div>
     <div class="card_title">
         <h1>Liste des articles</h1>
-    </div>
-    <div class="field button">
-        <a href="index.php?controller=user&task=showUsers">
-            <input type="submit" value="retour">
-        </a>
     </div>
     <table>
         <tr class="sticky">

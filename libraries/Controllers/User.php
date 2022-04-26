@@ -5,41 +5,6 @@ namespace Controllers;
 class User extends Controller
 {
 
-    // public function insert()
-    // {
-    //     $userClass = new \Models\User();
-
-    //     $lname = null;
-    //     $fname = null;
-    //     $email = null;
-    //     $pwd = null;
-    //     $password = null;
-    //     $adress = null;
-    //     $city = null;
-    //     $zip_code = null;
-
-    //     if (!empty($_POST['lname']) && !empty($_POST['fname']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['adress']) && !empty($_POST['city']) && !empty($_POST['zip_code'])) {
-
-    //         $lname = $_POST['lname'];
-    //         $fname = $_POST['fname'];
-    //         $email = $_POST['email'];
-    //         $pwd = $_POST['password'];
-    //         $password = password_hash($pwd, PASSWORD_DEFAULT);
-    //         $adress = $_POST['adress'];
-    //         $city = $_POST['city'];
-    //         $zip_code = $_POST['zip_code'];
-    //         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    //             $userClass->insertUser($lname, $fname, $email, $password, $adress, $city, $zip_code);
-
-    //             $this->redirect('index.php');
-    //         } else {
-    //             echo json_encode("L'email : $email, n'est pas un email valide.");
-    //         }
-    //     } else {
-    //         echo json_encode("Vous devez remplir toutes les données.");
-    //     }
-    // }
-
     public function insert()
     {
         $userClass = new \Models\User();
@@ -255,6 +220,36 @@ class User extends Controller
             $userClass->edit($lname, $fname, $email, $adress, $city, $zip_code, $id);
 
             $this->redirect('index.php?controller=pret&task=availableIndex');
+        } else {
+            echo "L'email : $email, n'est pas un email valide.";
+        }
+    }
+
+    public function pageCreateUser()
+    {
+        $pageTitle = "Création d'utilisateur";
+
+        $this->render('admin/createUser', compact('pageTitle'));
+    }
+
+    public function createUser()
+    {
+        $userClass = new \Models\User();
+
+        $lname = $_POST['create_lname'];
+        $fname = $_POST['create_fname'];
+        $email = $_POST['create_email'];
+        $pwd = $_POST['create_password'];
+        $password = password_hash($pwd, PASSWORD_DEFAULT);
+        $adress = $_POST['create_adress'];
+        $city = $_POST['create_city'];
+        $zip_code = $_POST['create_zip_code'];
+        $role = $_POST['create_role'];
+
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $userClass->createUser($lname, $fname, $email, $password, $adress, $city, $zip_code, $role);
+
+            $this->redirect('index.php?controller=user&task=showUsers&info=createdUser');
         } else {
             echo "L'email : $email, n'est pas un email valide.";
         }

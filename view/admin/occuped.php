@@ -1,14 +1,12 @@
 <?php include('view/admin/redirect.php'); ?>
 
+
+<div class="field button">
+    <?php include('view/template/admin.php'); ?>
+</div>
 <div class="card_title">
     <h1>Listes des livres empruntés</h1>
 </div>
-<div class="field button">
-    <a href="index.php?controller=user&task=showUsers">
-        <input type="submit" value="retour">
-    </a>
-</div>
-
 <ul class="card_lst">
 
     <?php foreach ($emprunt as $e) :  ?>
@@ -36,6 +34,7 @@
                             <h3 class="subj <?= $last_day; ?>"> <?= $e['title']; ?></h3>
                             <p class="line"></p>
                             <p class="author <?= $last_day; ?>">Emprunter par <?= $e['user_fname'] . ' ' . $e['user_lname'] . ' '; ?>le <?= $e['date_got']; ?></p>
+                            <p class="line"></p>
                             <h3 class="status <?= $last_day; ?>">
                                 <?= $e['status']; ?>
                             </h3>
