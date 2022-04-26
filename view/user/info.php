@@ -9,7 +9,7 @@
                 <div class="add-titre user_infos">
 
                     <div style="margin-top: 0;" style="margin-bottom:15px;" class="card_title">
-                        <h1>Mes informations...</h1>
+                        <h1>Mes informations ...</h1>
                     </div>
 
                     <label for="edit_fname">Prénom</label>

@@ -170,7 +170,7 @@ li {
     margin: 20px 0;
 }
 
-.form form .error-txt {
+.error-txt {
     color: #721c24;
     background: #f8d7da;
     padding: 8px 10px;
@@ -673,6 +673,7 @@ label {
     background-color: #ff9800;
     color: white;
     border-radius: 15px;
+    margin: 15px 0px;
     width: 600px;
     opacity: 1;
     transition: opacity 0.6s;
@@ -710,7 +711,7 @@ label {
   padding: 20px;
   background-color: #f44336;
   color: white;
-  margin-bottom: 15px;
+  margin: 15px 0px;
   width: 600px;
   opacity: 1;
   transition: opacity 0.6s;
@@ -719,7 +720,7 @@ label {
     background-color: #f44336;
 }
 .alert_btn {
-    margin-left: 25px;
+    margin-left: 20px;
   color: white;
   font-weight: bold;
   float: right;
@@ -728,4 +729,8 @@ label {
   cursor: pointer;
   transition: 0.3s;
   background-color: #f44336;
+}
+.alert_btn:hover {
+    background-color: #f44336;
+
 }

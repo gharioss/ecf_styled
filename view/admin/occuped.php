@@ -3,18 +3,43 @@
 <div class="card_title">
     <h1>Listes des livres empruntés</h1>
 </div>
-<div class="field button">
-    <a href="index.php?controller=user&task=showUsers">
-        <input type="submit" value="retour">
-    </a>
-</div>
-<article class="historique">
+
+
+<ul class="card_lst">
+
     <?php foreach ($emprunt as $e) :  ?>
-        <div class="list_historique">
-            <a href="index.php?controller=articles&task=show&id=<?= $e['id_article']; ?>">
-                <img src="<?= $e['img'] ?>" />
-                <p><?= $e['status']; ?></p>
-            </a>
-        </div>
+
+        <?php if ($e['status'] === 'C\'est le dernier jour avant de devoir rendre cet article...') {
+            $last_day = 'last_day';
+        } elseif ($e['status'] === 'Temps imparti dépassé...') {
+            $last_day = 'late_day';
+        } else {
+            $last_day = '';
+        }
+        ?>
+
+        <li>
+            <div class="card_flipper">
+                <a class="card_item" href="index.php?controller=articles&task=show&id=<?= $e['id_article']; ?>">
+                    <div class="card_front">
+
+                        <img src="<?= $e['img'] ?>" />
+                        <div class="info card_title">
+                        </div>
+                    </div>
+                    <div class="card_back">
+                        <div class="info back_info <?= $last_day; ?>">
+                            <h3 class="subj <?= $last_day; ?>"> <?= $e['title']; ?></h3>
+                            <p class="line"></p>
+                            <p class="author <?= $last_day; ?>">Emprunter par <?= $e['user_fname'] . ' ' . $e['user_lname'] . ' '; ?>le <?= $e['date_got']; ?></p>
+                            <h3 class="status <?= $last_day; ?>">
+                                <?= $e['status']; ?>
+                            </h3>
+                            <p class="line"></p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </li>
     <?php endforeach; ?>
-</article>
+</ul>

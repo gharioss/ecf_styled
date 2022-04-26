@@ -15,7 +15,7 @@
         <legend>Rechercher par auteur : </legend>
         <div class="custom-select">
             <form action="index.php?controller=articles&task=specificSearch" method="POST">
-                <select id="category" name="id_autheur" style="width:220px;">
+                <select name="id_autheur" style="width:220px;">
                     <?php foreach ($autheurs as $autheur) : ?>
                         <option value="<?= $autheur['fname']; ?>"><?= $autheur['fname'] . ' ' . $autheur['lname']; ?></option>
                     <?php endforeach; ?>
@@ -31,7 +31,7 @@
         <legend>Rechercher par collection : </legend>
         <div>
             <form action="index.php?controller=articles&task=specificSearch" method="POST">
-                <select id="category" name="id_collection" style="width:220px;">
+                <select name="id_collection" style="width:220px;">
                     <?php foreach ($autheurs as $autheur) : ?>
                         <option value="<?= $autheur['collection']; ?>"><?= $autheur['collection']; ?></option>
                     <?php endforeach; ?>
@@ -47,7 +47,7 @@
         <legend>Rechercher par edition : </legend>
         <div>
             <form action="index.php?controller=articles&task=specificSearch" method="POST">
-                <select id="category" name="id_edition" style="width:220px;">
+                <select name="id_edition" style="width:220px;">
                     <?php foreach ($autheurs as $autheur) : ?>
                         <option value="<?= $autheur['edition']; ?>"><?= $autheur['edition']; ?></option>
                     <?php endforeach; ?>
@@ -65,7 +65,7 @@
         <legend>Rechercher par catégorie : </legend>
         <div>
             <form action="index.php?controller=articles&task=specificSearch" method="POST">
-                <select id="category" name="id_category" style="width:220px;">
+                <select name="id_category" style="width:220px;">
                     <?php foreach ($categorys as $category) : ?>
                         <option value="<?= $category['id_category']; ?>"><?= $category['category_name']; ?></option>
                     <?php endforeach; ?>
@@ -83,7 +83,7 @@
         <legend>Rechercher par genre : </legend>
         <div>
             <form action="index.php?controller=articles&task=specificSearch" method="POST">
-                <select id="category" name="id_tags" style="width:220px;">
+                <select name="id_tags" style="width:220px;">
                     <?php foreach ($allTags as $tags) : ?>
                         <option value="<?= $tags['id_tags']; ?>"><?= $tags['tags']; ?></option>
                     <?php endforeach; ?>
@@ -129,7 +129,7 @@
     <div class="warning_msg">
         <div class="alert">
             <span class="closebtn alert_btn" onclick="this.parentElement.style.display='none';">&times;</span>
-            <strong>ATTENTION!</strong> La date de rendue de <?= $late_day . ' ' . $alertBook; ?> à expiré !!
+            <strong>ATTENTION!</strong> La date de rendu de <?= $late_day . ' ' . $alertBook; ?> à expiré !!
         </div>
     </div>
 <?php endif; ?>
