@@ -9,6 +9,7 @@
     margin: 0;
     background: rgb(247, 247, 247);
     outline: none;
+    font-size: 17px;
 }
 
 .top_navbar .logo {
@@ -432,12 +433,18 @@ form .button {
     background: transparent;
     margin-top: 15px;
 }
+.card_title h1 {
+    font-size: 30px;
+}
 
 .back_info, .card_item, .subj, .author, .summary, .status{
     background: #84947B;
     /* background: rgb(255, 99, 71); */
     color: #fff;
     
+}
+.summary {
+    font-size: 15px;
 }
 .last_day {
     background: #ff9800;
@@ -733,4 +740,88 @@ label {
 .alert_btn:hover {
     background-color: #f44336;
 
+}
+
+.success {
+    border-radius: 15px;
+    padding: 20px;
+    background-color: #04AA6D;
+    color: white;
+    margin: 15px 0px;
+    width: 600px;
+    opacity: 1;
+    transition: opacity 0.6s;
+  }
+  .success strong {
+      background-color: #04AA6D;
+  }
+  .success_btn {
+      margin-left: 20px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    background-color: #04AA6D;
+  }
+  .success_btn:hover {
+      background-color: #04AA6D;
+  
+  }
+.footer {
+    position: relative;
+    bottom: 0;
+    background: #E1E9E1;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100vw;
+    overflow: hidden;
+    height: 150px;
+    margin-top: 40px;
+}
+
+.footer .text, .footer .text p {
+    display: flex;
+    align-items: center;
+    background-color: #E1E9E1;
+}
+
+.icons ul {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.footer .icons {
+    display: flex;
+}
+.icons ul, .icons li, .icons li i {
+    background-color: #E1E9E1;
+}
+.icons li {
+    display: flex;
+    align-items: center;
+}
+.icons li a{
+    background-color: #E1E9E1;
+}
+
+.footer .icons i {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-right: 10px;
+    height: 40px;
+    font-size: 20px;
+}
+.sticky {
+    position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+}
+
+body {
+    position: absolute;
+    height: 100vh;
 }

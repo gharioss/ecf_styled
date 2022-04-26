@@ -37,5 +37,3 @@ document.querySelector(".signup form").addEventListener("submit", (event) => {
       }
     });
 });
-
-//json encore sur user.php

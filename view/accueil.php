@@ -106,15 +106,10 @@
         $late_day++;
     }
 
-    if ($last_day == 1) {
+    if ($last_day == 1 || $late_day == 1) {
         $warningBook = 'livre';
     } else {
         $warningBook = 'livres';
-    }
-    if ($late_day == 1) {
-        $alertBook = 'livre';
-    } else {
-        $alertBook = 'livres';
     }
 } ?>
 
@@ -129,7 +124,14 @@
     <div class="warning_msg">
         <div class="alert">
             <span class="closebtn alert_btn" onclick="this.parentElement.style.display='none';">&times;</span>
-            <strong>ATTENTION!</strong> La date de rendu de <?= $late_day . ' ' . $alertBook; ?> à expiré !!
+            <strong>ATTENTION!</strong> La date de rendu de <?= $late_day . ' ' . $warningBook; ?> à expiré !!
+        </div>
+    </div>
+<?php elseif (isset($_GET['info']) && $_GET['info'] == 'emprunted') : ?>
+    <div class="warning_msg">
+        <div class="success">
+            <span class="closebtn success_btn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <strong>Succès!</strong> Vous venez d'emprunter un livre !!
         </div>
     </div>
 <?php endif; ?>
@@ -155,6 +157,8 @@
                                 <h3 class="subj"> <?= $articles[$i]['title']; ?></h3>
                                 <p class="line"></p>
                                 <p class="author"><?= $articles[$i]['fname'] . ' ' . $articles[$i]['lname']; ?></p>
+                                <p class="line"></p>
+                                <p class="author"><?= $articles[$i]['tags']; ?></p>
                                 <p class="line"></p>
                                 <p class="summary">
                                     <?= $articles[$i]['content']; ?>
@@ -191,6 +195,8 @@
                                 <p class="line"></p>
                                 <p class="author"><?= $articles[$i]['fname'] . ' ' . $articles[$i]['lname']; ?></p>
                                 <p class="line"></p>
+                                <p class="author"><?= $articles[$i]['tags']; ?></p>
+                                <p class="line"></p>
                                 <p class="summary">
                                     <?= $articles[$i]['content']; ?>
                                 </p>
@@ -202,18 +208,4 @@
         <?php endif; ?>
     <?php endfor; ?>
 </ul>
-
-<script>
-    var close = document.getElementsByClassName("closebtn");
-    var i;
-
-    for (i = 0; i < close.length; i++) {
-        close[i].onclick = function() {
-            var div = this.parentElement;
-            div.style.opacity = "0";
-            setTimeout(function() {
-                div.style.display = "none";
-            }, 600);
-        }
-    }
-</script>
+<script src="javascript/close.js"></script>

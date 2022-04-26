@@ -20,4 +20,11 @@ abstract class Model
         $acteurs = $stmt1->fetchAll();
         return $acteurs;
     }
+    public function findAlls()
+    {
+        $stmt1 = $this->pdo->query("SELECT * FROM {$this->table} LEFT JOIN tags ON articles.id_tags = tags.id_tags WHERE available = 1");
+
+        $acteurs = $stmt1->fetchAll();
+        return $acteurs;
+    }
 }

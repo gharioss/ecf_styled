@@ -131,16 +131,16 @@
 
         <div id="form_login">
             <div class="wrapper">
-                <section class="form signup">
-                    <form action="index.php?controller=user&task=login" method="POST">
+                <section class="form login">
+                    <form id="login_form" action="index.php?controller=user&task=login" method="POST">
                         <div id="login_error" class="error-txt"></div>
                         <div class="field input">
                             <label>Adresse email</label>
-                            <input type="text" name="email" placeholder="Entrer votre email" required>
+                            <input id="login_email" type="text" name="email" placeholder="Entrer votre email" required>
                         </div>
                         <div class="field input">
                             <label>Mot de passe</label>
-                            <input type="password" name="password" placeholder="Entrez votre mot de passe" required>
+                            <input id="login_password" type="password" name="password" placeholder="Entrez votre mot de passe" required>
                             <i class="fas fa-eye"></i>
                         </div>
                         <div class="field button">
@@ -157,7 +157,28 @@
 
     </main>
 
+    <footer>
+        <div class="footer">
+            <div class="text">
+                <p>2022 par AVENTURES GUSTATIVES</p>
+            </div>
+            <nav class="icons">
+                <ul>
+                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-pinterest"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+
+
+
+
     <script src="javascript/sign_up.js"></script>
+    <script src="javascript/login.js"></script>
 
     <script>
         document.getElementById("signup").addEventListener('click', event => {

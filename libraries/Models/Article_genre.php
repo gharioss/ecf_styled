@@ -1,23 +1,23 @@
 <?php
 
-namespace Models;
+// namespace Models;
 
-class Article_genre extends Model
-{
-    protected $table = "article_genre";
+// class Article_genre extends Model
+// {
+//     protected $table = "article_genre";
 
 
-    public function insert($genre)
-    {
+//     public function insert($genre)
+//     {
 
-        if (!isset($_SESSION)) {
-            session_start();
-        }
+//         if (!isset($_SESSION)) {
+//             session_start();
+//         }
 
-        $stmt1 = $this->pdo->prepare("INSERT INTO {$this->table} (id_articles, id_tags) VALUES (:last_id, '" . $genre . "')");
-        $stmt1->bindParam(':last_id', $_SESSION['last_id']);
-        $stmt1->execute();
-    }
+//         $stmt1 = $this->pdo->prepare("INSERT INTO {$this->table} (id_articles, id_tags) VALUES (:last_id, '" . $genre . "')");
+//         $stmt1->bindParam(':last_id', $_SESSION['last_id']);
+//         $stmt1->execute();
+//     }
 
     // public function selectAll()
     // {
@@ -32,4 +32,4 @@ class Article_genre extends Model
 
     //     return $allInfo;
     // }
-}
+// }

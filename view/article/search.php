@@ -13,7 +13,7 @@
 
     <fieldset>
         <legend>Rechercher par auteur : </legend>
-        <div class="custom-select" style="width:250px;">
+        <div class="custom-select" style="width:260px;">
             <form action="index.php?controller=articles&task=specificSearch" method="POST">
                 <select id="category" name="id_autheur" style="width:220px;">
                     <?php foreach ($autheurs as $autheur) : ?>
@@ -119,6 +119,8 @@
                             <h3 class="subj"> <?= $search['title']; ?></h3>
                             <p class="line"></p>
                             <p class="author"><?= $search['fname'] . ' ' . $search['lname']; ?></p>
+                            <p class="line"></p>
+                            <p class="author"><?= $search['tags']; ?></p>
                             <p class="line"></p>
                             <p class="summary">
                                 <?= $search['content']; ?>

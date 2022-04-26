@@ -97,22 +97,40 @@ class User extends Controller
     {
         $userClass = new \Models\User();
 
-        $email = null;
-        $password = null;
+        $contentType = isset($_SERVER['CONTENT_TYPE']) ? trim($_SERVER['CONTENT_TYPE']) : '';
 
-        if (!empty($_POST['email']) && !empty($_POST['password'])) {
+        if ($contentType === "application/json") {
 
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-            if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $userClass->loginUser($email, $password);
+            //Receive the RAW post data.
+            $content = trim(file_get_contents("php://input"));
 
-                $this->redirect('index.php');
+
+            $decoded = json_decode($content, true);
+
+
+            //If json_decode failed, the JSON is invalid.
+
+            if (!is_array($decoded)) {
+                // Send error back to user.
+                echo "there was an error";
             } else {
-                echo "L'email : $email, n'est pas un email valide.";
+
+                header('Content-Type: application/json');
+
+                $email = $decoded['email'];
+                $pwd = $decoded['pwd'];
+            }
+        }
+
+        if (!empty($email) && !empty($pwd)) {
+
+            if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $userClass->loginUser($email, $pwd);
+            } else {
+                echo json_encode("L'email : $email, n'est pas un email valide.");
             }
         } else {
-            echo "Vous devez remplir toutes les données.";
+            echo json_encode("Vous devez remplir toutes les données.");
         }
     }
 
@@ -161,7 +179,7 @@ class User extends Controller
 
         $pageTitle = "Tous les utilisateurs";
 
-        $this->redirect('index.php?controller=user&task=showUsers');
+        $this->redirect('index.php?controller=user&task=showUsers&info=deletedUser');
     }
 
     public function getUser()
@@ -207,7 +225,7 @@ class User extends Controller
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $userClass->edit($lname, $fname, $email, $adress, $city, $zip_code, $id);
 
-            $this->redirect('index.php?controller=user&task=showUsers');
+            $this->redirect('index.php?controller=user&task=showUsers&info=editedUser');
         } else {
             echo "L'email : $email, n'est pas un email valide.";
         }

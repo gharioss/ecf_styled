@@ -44,9 +44,10 @@ class User extends Model
             session_start();
             $_SESSION['is_logged'] = $user[0]['id_user'];
             $_SESSION['is_admin'] = $user[0]['id_role'];
-            echo "success";
+
+            echo json_encode("success");
         } else {
-            echo "no";
+            echo json_encode("L'email et le mot de passe ne correspondent pas");
         }
     }
 

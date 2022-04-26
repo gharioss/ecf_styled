@@ -14,7 +14,7 @@ class Articles extends Controller
         $pretClass = new \Models\Pret();
 
 
-        $articles = $articleClass->findAll();
+        $articles = $articleClass->findAlls();
 
         $autheurs = $articleClass->getAutheur();
 
@@ -64,16 +64,19 @@ class Articles extends Controller
 
         $article = $articleClass->update($article_id);
 
-        $this->redirect('index.php');
+        $this->redirect('index.php?info=emprunted');
     }
 
 
     public function showAdd()
     {
+        $article_genreClass = new \Models\Tags();
+
+        $allTags = $article_genreClass->selectTags();
 
         $pageTitle = "Ajouter un article";
 
-        $this->render('admin/addBook', compact('pageTitle'));
+        $this->render('admin/addBook', compact('pageTitle', 'allTags'));
     }
 
 
@@ -92,10 +95,9 @@ class Articles extends Controller
         $id_category = null;
         $collection = null;
         $edition = null;
+        $genre = null;
 
-        $checkbox1 = null;
-
-        if (!empty($_POST['add_fname']) && !empty($_POST['add_lname']) && !empty($_POST['add_title']) && !empty($_POST['add_contenu']) && !empty($_POST['add_category']) && !empty($_POST['add_collection']) && !empty($_POST['add_edition'])) {
+        if (!empty($_POST['add_fname']) && !empty($_POST['add_lname']) && !empty($_POST['add_title']) && !empty($_POST['add_contenu']) && !empty($_POST['add_category']) && !empty($_POST['add_collection']) && !empty($_POST['add_edition']) && !empty($_POST['add_tags'])) {
 
             if (move_uploaded_file($_FILES['add_image']['tmp_name'], $pic_path)) {
 
@@ -107,12 +109,13 @@ class Articles extends Controller
                 $id_category = $_POST['add_category'];
                 $collection = $_POST['add_collection'];
                 $edition = $_POST['add_collection'];
+                $genre = $_POST['add_tags'];
 
 
-                $articleClass->insertRecipe($fname, $lname, $title, $img, $content, $id_category, $collection, $edition);
+                $articleClass->insertRecipe($fname, $lname, $title, $img, $content, $id_category, $genre, $collection, $edition);
 
 
-                $this->redirect('index.php?controller=tags&task=showTags');
+                $this->redirect('index.php?controller=articles&task=getAllArticle&info=createdArticle');
             }
         } else {
             echo "Vous devez remplir toutes les données.";
@@ -126,7 +129,6 @@ class Articles extends Controller
 
 
         $articles = $articleClass->getAll();
-
 
         $pageTitle = "Tous les articles";
 
@@ -149,7 +151,7 @@ class Articles extends Controller
 
         $usersInfo = $articleClass->delete($id);
 
-        $this->redirect('index.php?controller=articles&task=getAllArticle');
+        $this->redirect('index.php?controller=articles&task=getAllArticle&info=deletedArticle');
     }
 
     public function editArticle()
@@ -228,7 +230,7 @@ class Articles extends Controller
 
             $articleClass->fullEdit($fname, $lname, $title, $content, $collection, $edition, $id);
 
-            $this->redirect('index.php?controller=articles&task=getAllArticle');
+            $this->redirect('index.php?controller=articles&task=getAllArticle&info=editedArticle');
         }
         echo "there was a pb";
     }

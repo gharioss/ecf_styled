@@ -1,5 +1,28 @@
 <?php include('view/admin/redirect.php'); ?>
 
+<?php if (isset($_GET['info']) && $_GET['info'] == 'editedArticle') : ?>
+    <div class="warning_msg">
+        <div class="warning">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <strong>ATTENTION!</strong> Un article vient d'être supprimé !!
+        </div>
+    </div>
+<?php elseif (isset($_GET['info']) && $_GET['info'] == 'deletedArticle') : ?>
+    <div class="warning_msg">
+        <div class="alert">
+            <span class="closebtn alert_btn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <strong>ATTENTION!</strong> Un article vient d'être modifié !!
+        </div>
+    </div>
+<?php elseif (isset($_GET['info']) && $_GET['info'] == 'createdArticle') : ?>
+    <div class="warning_msg">
+        <div class="success">
+            <span class="closebtn success_btn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <strong>Succès!</strong> Un article vient d'être ajouté !!
+        </div>
+    </div>
+<?php endif; ?>
+
 <div class="table">
     <div class="card_title">
         <h1>Liste des articles</h1>
@@ -10,11 +33,11 @@
         </a>
     </div>
     <table>
-        <tr>
+        <tr class="sticky">
             <th>IMAGE</th>
             <th>TITRE</th>
-            <th>NOM</th>
-            <th>PRENOM</th>
+            <th>AUTEUR</th>
+            <th>GENRE</th>
             <th>COLLECTION</th>
             <th>EDITION</th>
             <th>ACTIONS</th>
@@ -23,8 +46,8 @@
             <tr>
                 <td><img class="list_img" src="<?= $article['img'] ?>" /></td>
                 <td><?= $article['title'] ?></td>
-                <td><?= $article['lname'] ?></td>
-                <td><?= $article['fname'] ?></td>
+                <td><?= $article['lname'] . ' ' . $article['fname'] ?></td>
+                <td><?= $article['tags'] ?></td>
                 <td><?= $article['collection'] ?></td>
                 <td><?= $article['edition'] ?></td>
                 <td>
@@ -39,3 +62,5 @@
         <?php endforeach; ?>
     </table>
 </div>
+
+<script src="javascript/close.js"></script>

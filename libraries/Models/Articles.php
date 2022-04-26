@@ -32,33 +32,43 @@ class Articles extends Model
     }
 
 
+    public function getTags()
+    {
+        $stmt1 = $this->pdo->prepare("SELECT * from {$this->table} LEFT JOIN tags
+                                    ON articles.id_tags = tags.id_tags
+                                    ");
+        // $stmt1->bindParam(':id_article', $id);
+        $stmt1->execute();
+        $article = $stmt1->fetchAll();
 
-    public function insertRecipe($fname, $lname, $title, $img, $content, $id_category, $collection, $edition)
+        return $article;
+    }
+
+
+
+    public function insertRecipe($fname, $lname, $title, $img, $content, $id_category, $genre, $collection, $edition)
     {
         $stmt2 = $this->pdo->prepare("INSERT INTO articles
-                                    (fname, lname, title, img, content, date_put, id_category, available, collection, edition)
+                                    (fname, lname, title, img, content, date_put, id_category, id_tags, available, collection, edition)
                                     VALUES
-                                    (:fname, :lname, :title, :img, :content, CURRENT_DATE(), :id_category, 1, :collection, :edition)");
+                                    (:fname, :lname, :title, :img, :content, CURRENT_DATE(), :id_category, :id_tags, 1, :collection, :edition)");
         $stmt2->bindParam(':fname', $fname);
         $stmt2->bindParam(':lname', $lname);
         $stmt2->bindParam(':title', $title);
         $stmt2->bindParam(':img', $img);
         $stmt2->bindParam(':content', $content);
         $stmt2->bindParam(':id_category', $id_category);
+        $stmt2->bindParam(':id_tags', $genre);
         $stmt2->bindParam(':collection', $collection);
         $stmt2->bindParam(':edition', $edition);
         $stmt2->execute();
-
-
-        if (!isset($_SESSION)) {
-            session_start();
-        }
-        $_SESSION['last_id'] = $this->pdo->lastInsertId();
     }
 
     public function getAll()
     {
-        $sql = $this->pdo->query("SELECT * FROM {$this->table} ORDER BY id_article DESC");
+        $sql = $this->pdo->query("SELECT * FROM {$this->table}
+                                LEFT JOIN tags ON articles.id_tags = tags.id_tags
+                                ORDER BY id_article DESC");
         $articles = $sql->fetchAll();
 
         return $articles;
@@ -81,8 +91,7 @@ class Articles extends Model
     public function getAllAndTags($id)
     {
         $stmt1 = $this->pdo->query("SELECT * FROM articles
-                                    LEFT JOIN article_genre ON article_genre.id_articles = articles.id_article
-                                    LEFT JOIN tags ON article_genre.id_tags = tags.id_tags
+                                    LEFT JOIN tags ON articles.id_tags = tags.id_tags
                                     WHERE articles.id_article = $id");
         $all = $stmt1->fetchAll();
 
@@ -137,7 +146,9 @@ class Articles extends Model
 
     public function searchAutheur($search)
     {
-        $stmt1 = $this->pdo->prepare("SELECT * FROM {$this->table} WHERE concat(fname,lname) LIKE '%{$search}%'");
+        $stmt1 = $this->pdo->prepare("SELECT * FROM {$this->table}
+                                    LEFT JOIN tags ON articles.id_tags = tags.id_tags
+                                    WHERE concat(fname,lname) LIKE '%{$search}%'");
         $stmt1->execute();
 
         $autheur = $stmt1->fetchAll();
@@ -148,7 +159,9 @@ class Articles extends Model
 
     public function searchCollection($search)
     {
-        $stmt1 = $this->pdo->prepare("SELECT * FROM {$this->table} WHERE collection LIKE '%{$search}%'");
+        $stmt1 = $this->pdo->prepare("SELECT * FROM {$this->table}
+                                     LEFT JOIN tags ON articles.id_tags = tags.id_tags
+                                     WHERE collection LIKE '%{$search}%'");
         $stmt1->execute();
 
         $autheur = $stmt1->fetchAll();
@@ -159,7 +172,9 @@ class Articles extends Model
 
     public function searchEdition($search)
     {
-        $stmt1 = $this->pdo->prepare("SELECT * FROM {$this->table} WHERE edition LIKE '%{$search}%'");
+        $stmt1 = $this->pdo->prepare("SELECT * FROM {$this->table}
+                                    LEFT JOIN tags ON articles.id_tags = tags.id_tags
+                                    WHERE edition LIKE '%{$search}%'");
         $stmt1->execute();
 
         $autheur = $stmt1->fetchAll();
@@ -170,7 +185,10 @@ class Articles extends Model
 
     public function searchCategory($search)
     {
-        $stmt1 = $this->pdo->prepare("SELECT * FROM {$this->table} LEFT JOIN category ON articles.id_category = category.id_category WHERE articles.id_category = $search");
+        $stmt1 = $this->pdo->prepare("SELECT * FROM {$this->table}
+                                    LEFT JOIN tags ON articles.id_tags = tags.id_tags
+                                    LEFT JOIN category ON articles.id_category = category.id_category
+                                    WHERE articles.id_category = $search");
         $stmt1->execute();
 
         $autheur = $stmt1->fetchAll();
@@ -182,7 +200,9 @@ class Articles extends Model
 
     public function searchTags($search)
     {
-        $stmt1 = $this->pdo->prepare("SELECT * FROM article_genre LEFT JOIN articles ON article_genre.id_articles = articles.id_article LEFT JOIN tags ON article_genre.id_tags = tags.id_tags WHERE article_genre.id_tags = $search");
+        $stmt1 = $this->pdo->prepare("SELECT * FROM {$this->table}
+                                    LEFT JOIN tags ON articles.id_tags = tags.id_tags
+                                    WHERE articles.id_tags = $search");
         $stmt1->execute();
 
         $autheur = $stmt1->fetchAll();

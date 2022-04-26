@@ -1,24 +1,24 @@
 <?php
 
-namespace Controllers;
+// namespace Controllers;
 
-class Article_genre extends Controller
-{
+// class Article_genre extends Controller
+// {
 
-    public function insertTags()
-    {
-        $article_genreClass = new \Models\Article_genre();
-
-
-        $checkbox1 = $_POST['chkl'];
+//     public function insertTags()
+//     {
+//         $article_genreClass = new \Models\Article_genre();
 
 
-        for ($i = 0; $i < sizeof($checkbox1); $i++) {
-            $article_genreClass->insert($checkbox1[$i]);
-        }
+//         $checkbox1 = $_POST['chkl'];
 
-        $this->redirect('index.php');
-    }
+
+//         for ($i = 0; $i < sizeof($checkbox1); $i++) {
+//             $article_genreClass->insert($checkbox1[$i]);
+//         }
+
+//         $this->redirect('index.php');
+//     }
 
     // public function allInfo()
     // {
@@ -30,4 +30,4 @@ class Article_genre extends Controller
 
     //     $this->render('admin/listBook', compact('pageTitle', 'allInfo'));
     // }
-}
+// }

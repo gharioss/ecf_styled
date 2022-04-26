@@ -28,25 +28,13 @@
             <p>Date d'enregistrement : <?= $detailArticles[0]['date_put'] ?></p>
 
 
-            <div style="margin-bottom: 15px;" class="contact-input">
-
-                <div class="add-titre">
-                    <fieldset>
-                        <legend>Choisissez les tags : </legend>
-
-                        <div>
-
-
-                            <?php foreach ($allTags as $tags) : ?>
-                                <input type="checkbox" name="chkl[ ]" value="<?= $tags['id_tags']; ?>">
-                                <label for="scales"><?= $tags['tags']; ?></label>
-
-                            <?php endforeach; ?>
-
-                        </div>
-
-                    </fieldset>
-                </div>
+            <div class="add-category">
+                <label for="add_category">Genres:</label>
+                <select name="add_tags">
+                    <?php foreach ($allTags as $tags) : ?>
+                        <option value="<?= $tags['id_tags']; ?>"><?= $tags['tags']; ?></option>
+                    <?php endforeach; ?>
+                </select>
             </div>
 
 

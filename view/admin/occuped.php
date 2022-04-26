@@ -3,7 +3,11 @@
 <div class="card_title">
     <h1>Listes des livres empruntés</h1>
 </div>
-
+<div class="field button">
+    <a href="index.php?controller=user&task=showUsers">
+        <input type="submit" value="retour">
+    </a>
+</div>
 
 <ul class="card_lst">
 

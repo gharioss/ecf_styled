@@ -1,4 +1,19 @@
 <?php include('view/admin/redirect.php'); ?>
+<?php if (isset($_GET['info']) && $_GET['info'] == 'editedUser') : ?>
+    <div class="warning_msg">
+        <div class="warning">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <strong>ATTENTION!</strong> Un utilisateur vient d'être modifié !!
+        </div>
+    </div>
+<?php elseif (isset($_GET['info']) && $_GET['info'] == 'deletedUser') : ?>
+    <div class="warning_msg">
+        <div class="alert">
+            <span class="closebtn alert_btn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <strong>ATTENTION!</strong> Un utilisateur vient d'être supprimé !!
+        </div>
+    </div>
+<?php endif; ?>
 <div class="table">
     <div class="card_title">
         <h1>Liste des utilisateurs</h1>
@@ -9,7 +24,7 @@
         <a href="index.php?controller=pret&task=nonAvailable"><input class="editCom" type="submit" value="Liste des oeuvres empruntées"></a>
     </div>
     <table>
-        <tr>
+        <tr class="sticky">
             <th>ID</th>
             <th>NOM</th>
             <th>PRENOM</th>
@@ -45,3 +60,4 @@
         <?php endforeach; ?>
     </table>
 </div>
+<script src="javascript/close.js"></script>

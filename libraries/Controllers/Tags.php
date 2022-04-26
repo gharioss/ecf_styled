@@ -1,18 +1,18 @@
 <?php
 
-namespace Controllers;
+// namespace Controllers;
 
-class Tags extends Controller
-{
+// class Tags extends Controller
+// {
 
-    public function showTags()
-    {
-        $article_genreClass = new \Models\Tags();
+//     public function showTags()
+//     {
+//         $article_genreClass = new \Models\Tags();
 
-        $allTags = $article_genreClass->selectTags();
+//         $allTags = $article_genreClass->selectTags();
 
-        $pageTitle = "Ajouter un article";
+//         $pageTitle = "Ajouter un article";
 
-        $this->render('admin/addTags', compact('pageTitle', 'allTags'));
-    }
-}
+//         $this->render('admin/addTags', compact('pageTitle', 'allTags'));
+//     }
+// }

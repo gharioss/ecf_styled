@@ -42,8 +42,17 @@
         </div>
 
         <div class="add-category">
+            <label for="add_category">Genres:</label>
+            <select name="add_tags">
+                <?php foreach ($allTags as $tags) : ?>
+                    <option value="<?= $tags['id_tags']; ?>"><?= $tags['tags']; ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+
+        <div class="add-category">
             <label for="add_category">Catégorie:</label>
-            <select id="category" name="add_category">
+            <select name="add_category">
                 <option value="4" selected>Roman</option>
                 <option value="5">Bande Dessinée</option>
                 <option value="6">Magasine</option>
