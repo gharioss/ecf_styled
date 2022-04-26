@@ -1,14 +1,14 @@
 <?php include('view/admin/redirect.php'); ?>
 
-<div class="addRecipe">
-    <div class="card_title">
-        <h1>Ajouter un article</h1>
-    </div>
-</div>
 <div class="field button">
     <a href="index.php?controller=user&task=showUsers">
         <input type="submit" value="retour">
     </a>
+</div>
+<div class="addRecipe">
+    <div class="card_title">
+        <h1>Ajouter un article</h1>
+    </div>
 </div>
 <form method="POST" action="index.php?controller=articles&task=addRecipe" enctype='multipart/form-data'>
     <div class="contact-input">

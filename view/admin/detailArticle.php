@@ -1,12 +1,12 @@
 <?php include('view/admin/redirect.php'); ?>
 
-<div class="card_title">
-    <h1>Modificier cet article</h1>
-</div>
 <div class="field button">
     <a href="index.php?controller=articles&task=getAllArticle">
         <input type="submit" value="retour">
     </a>
+</div>
+<div class="card_title">
+    <h1>Modificier cet article</h1>
 </div>
 <form method="POST" action="index.php?controller=articles&task=editThisArticle&id=<?= $detailArticles[0]['id_article']; ?>">
     <div class="contact-input">

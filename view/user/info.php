@@ -30,14 +30,6 @@
                     <label for="edit_zip_code">Code Postal</label>
                     <input class="edit_user" name="edit_zip_code" value="<?= $userInfo[0]['zip_code'] ?>" require>
 
-                    <div class="add-category">
-                        <label for="edit_role">Catégorie:</label>
-                        <select class="edit_user" id="category" name="edit_role">
-                            <option value="2" selected>Utilisateur</option>
-                            <option value="1">Admin</option>
-                        </select>
-                    </div>
-
                 </div>
 
                 <div class="field">

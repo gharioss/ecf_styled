@@ -136,6 +136,7 @@ class Articles extends Model
     {
         $sql = $this->pdo->query("SELECT * 
                                 FROM articles
+                                LEFT JOIN tags ON articles.id_tags = tags.id_tags
                                 WHERE concat(fname,lname) LIKE '%{$search}%' OR title LIKE '%{$search}%'
                                 ");
         $article = $sql->fetchAll();

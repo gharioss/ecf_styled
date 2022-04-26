@@ -97,7 +97,7 @@ class Pret extends Model
 
     public function print($id)
     {
-        $stmt1 = $this->pdo->prepare("SELECT pret.id_user, pret.available, pret.date_got, pret.id_article,pret.date_release, DATEDIFF(CURRENT_DATE(),                           date_release) AS date,
+        $stmt1 = $this->pdo->prepare("SELECT pret.id_user, pret.available, DATE_FORMAT(`date_got`, '%d/%m/%Y') as date_got, DATE_FORMAT                 (date_release,'%d/%m/%Y') as date_release, pret.id_article, DATEDIFF(CURRENT_DATE(),date_release) AS date,
                                     articles.fname, articles.lname, articles.title, articles.img, articles.content, articles.date_put, articles.date_update, articles.id_category, articles.available, articles.collection, articles.edition,
                                     users.fname as user_fname, users.lname as user_lname, users.email, users.adress, users.city, users.zip_code, users.id_role,
                                     CASE
